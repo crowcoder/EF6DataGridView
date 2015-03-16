@@ -13,7 +13,19 @@ Public Class Form1
 
         'Bring in all the fruit records into "Local" collection
         ctx.FruitDbSet.Load()
+        
+        ''''' WHERE examples....''''''''
+        'You can do a simple one line filter like this:
+        'ctx.FruitDbSet.Where(Function(f) f.FruitColor.Equals("red")).Load()
+        
+        'Or for more elaborate filters:
+        'Dim fr = From f In ctx.FruitDbSet
+        '         Where f.FruitName = "Apple"
+        '         Select f
 
+        'fr.Load()
+        ''''''''''''''''''''''''''''''''
+        
         'Get all the fruits and wrap them in a BindingList so the grid will allow new rows, etc.
         Dim flist = ctx.FruitDbSet.Local.ToBindingList()
         flist.AllowEdit = True
